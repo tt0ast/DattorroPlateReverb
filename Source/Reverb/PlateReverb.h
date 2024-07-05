@@ -25,15 +25,9 @@ public:
 
     void setPredelayTime (int newPredelayTime);
 
-    void setDecay (float newDecay);
+    void setSize (float newDecay);
 
-    void setDecayDiffusion1 (float newDecyDiffusion1);
-
-    void setInputDiffusion1 (float newInputDiffusion1);
-
-    void setInputDiffusion2 (float newInputDiffusion2);
-
-    void setBandwidth (float newBandwidth);
+    void setHighCut (float newBandwidth);
 
     void setDamping (float newDamping);
 

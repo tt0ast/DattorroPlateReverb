@@ -24,7 +24,7 @@ PlateReverb::PlateReverb()
     mix = 0.5;
 
     // write max delay times in milliseconds to the hash map
-    delayTimesMilsec.set("predelay", 1000);
+    delayTimesMilsec.set("predelay", 500);
     delayTimesMilsec.set("predelayTap", predelayTime);
 
     delayTimesMilsec.set ("delayLeft1", 149.62534);
@@ -282,33 +282,18 @@ float PlateReverb::clamp (float low, float high, float value)
 
 void PlateReverb::setPredelayTime (int newPredelayTime)
 {
-    predelayTime = clamp (0, 1000, newPredelayTime);
+    predelayTime = clamp (0, 500, newPredelayTime);
 }
 
-void PlateReverb::setDecay (float newDecay)
+void PlateReverb::setSize (float newDecay)
 {
     decay = clamp (0.01f, 0.99f, newDecay);
     decayDiffusion2 = clamp (0.25f, 0.5f, decay + 0.15);
 }
 
-void PlateReverb::setDecayDiffusion1 (float newDecayDiffusion1)
+void PlateReverb::setHighCut (float newBandwidth)
 {
-    decayDiffusion1 = clamp (0.01f, 0.99f, newDecayDiffusion1);
-}
-
-void PlateReverb::setInputDiffusion1 (float newInputDiffusion1)
-{
-    inputDiffusion1 = clamp(0.01f, 0.99f, newInputDiffusion1);
-}
-
-void PlateReverb::setInputDiffusion2 (float newInputDiffusion2)
-{
-    inputDiffusion2 = clamp(0.01f, 0.99f, newInputDiffusion2);
-}
-
-void PlateReverb::setBandwidth (float newBandwidth)
-{
-    bandwidth = clamp (0.0000001f, 0.9999999f, newBandwidth);
+    bandwidth = clamp (0.0000001f, 0.9999999f, 1.0f - newBandwidth);
 }
 
 void PlateReverb::setDamping (float newDamping)
